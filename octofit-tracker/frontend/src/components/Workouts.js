@@ -27,7 +27,9 @@ const Workouts = () => {
           <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Duration</th>
+            <th>Reps</th>
+            <th>User</th>
+            <th>Timestamp</th>
           </tr>
         </thead>
         <tbody>
@@ -35,7 +37,9 @@ const Workouts = () => {
             <tr key={workout.id}>
               <td>{workout.id}</td>
               <td>{workout.name}</td>
-              <td>{workout.duration}</td>
+              <td>{workout.reps}</td>
+              <td>{workout.user}</td>
+              <td>{workout.timestamp}</td>
             </tr>
           ))}
         </tbody>

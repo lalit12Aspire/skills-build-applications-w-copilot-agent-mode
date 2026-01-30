@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-const Leaderboard = () => {
+const Users = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const endpoint = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`;
+  const endpoint = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/users/`;
 
   useEffect(() => {
     fetch(endpoint)
@@ -12,8 +12,8 @@ const Leaderboard = () => {
         const results = json.results || json;
         setData(results);
         setLoading(false);
-        console.log('Leaderboard endpoint:', endpoint);
-        console.log('Leaderboard data:', results);
+        console.log('Users endpoint:', endpoint);
+        console.log('Users data:', results);
       });
   }, [endpoint]);
 
@@ -21,21 +21,23 @@ const Leaderboard = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">Leaderboard</h2>
+      <h2 className="mb-4">Users</h2>
       <table className="table table-striped">
         <thead>
           <tr>
-            <th>Rank</th>
-            <th>User</th>
-            <th>Points</th>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Team</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((entry, idx) => (
-            <tr key={entry.id || idx}>
-              <td>{idx + 1}</td>
-              <td>{entry.user}</td>
-              <td>{entry.points}</td>
+          {data.map(user => (
+            <tr key={user.id}>
+              <td>{user.id}</td>
+              <td>{user.username}</td>
+              <td>{user.email}</td>
+              <td>{user.team}</td>
             </tr>
           ))}
         </tbody>
@@ -44,4 +46,4 @@ const Leaderboard = () => {
   );
 };
 
-export default Leaderboard;
+export default Users;

@@ -27,7 +27,6 @@ const Teams = () => {
           <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Members</th>
           </tr>
         </thead>
         <tbody>
@@ -35,7 +34,6 @@ const Teams = () => {
             <tr key={team.id}>
               <td>{team.id}</td>
               <td>{team.name}</td>
-              <td>{Array.isArray(team.members) ? team.members.join(', ') : team.members}</td>
             </tr>
           ))}
         </tbody>
