@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Activities from './components/Activities';
@@ -6,6 +7,7 @@ import Leaderboard from './components/Leaderboard';
 import Teams from './components/Teams';
 import Users from './components/Users';
 import Workouts from './components/Workouts';
+import './App.css';
 
 function App() {
   return (
@@ -17,7 +19,7 @@ function App() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className="nav-link" to="/activities">Activities</Link>
               </li>
@@ -34,6 +36,10 @@ function App() {
                 <Link className="nav-link" to="/workouts">Workouts</Link>
               </li>
             </ul>
+            <form className="d-flex" role="search">
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <button className="btn btn-outline-light" type="submit">Search</button>
+            </form>
           </div>
         </div>
       </nav>
@@ -44,7 +50,15 @@ function App() {
           <Route path="/teams" element={<Teams />} />
           <Route path="/users" element={<Users />} />
           <Route path="/workouts" element={<Workouts />} />
-          <Route path="/" element={<h1 className="display-4 text-center">Welcome to Octofit Tracker</h1>} />
+          <Route path="/" element={
+            <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '60vh' }}>
+              <div className="card shadow-lg p-4" style={{ maxWidth: 500 }}>
+                <h1 className="display-4 mb-3 text-primary">Welcome to Octofit Tracker</h1>
+                <p className="lead">Track your fitness, join teams, and compete on the leaderboard!</p>
+                <Link to="/activities" className="btn btn-primary btn-lg mt-3">Get Started</Link>
+              </div>
+            </div>
+          } />
         </Routes>
       </div>
     </Router>

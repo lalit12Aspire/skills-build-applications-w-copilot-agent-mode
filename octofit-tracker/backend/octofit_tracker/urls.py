@@ -25,4 +25,8 @@ urlpatterns = [
         "api_base_url": f"https://{os.environ.get('CODESPACE_NAME', 'localhost')}-8000.app.github.dev/api/",
         "example_activities_url": f"https://{os.environ.get('CODESPACE_NAME', 'localhost')}-8000.app.github.dev/api/activities/"
     })),
+    path('', lambda request: JsonResponse({
+        "message": "Welcome to the Octofit Tracker API!",
+        "api_base_url": f"https://{os.environ.get('CODESPACE_NAME', 'localhost')}-8000.app.github.dev/api/"
+    })),
 ]
